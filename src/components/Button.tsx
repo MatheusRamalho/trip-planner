@@ -5,10 +5,10 @@ import dynamicIconImports from 'lucide-react/dynamicIconImports'
 
 import { Icon } from './Icon'
 
-const button = tv({
+const buttonVariants = tv({
     slots: {
         bContainer: [
-            'cursor-pointer rounded-lg px-5 py-2 font-medium flex items-center justify-center gap-2 ',
+            'cursor-pointer h-11 px-5 py-2 rounded-lg font-medium flex items-center justify-center gap-2 ',
         ],
         bIcon: 'size-5',
     },
@@ -24,11 +24,14 @@ const button = tv({
             },
         },
     },
+    defaultVariants: {
+        variant: 'primary',
+    },
 })
 
 interface ButtonProps
     extends ButtonHTMLAttributes<HTMLButtonElement>,
-        VariantProps<typeof button> {
+        VariantProps<typeof buttonVariants> {
     name: string
     icon?: keyof typeof dynamicIconImports
     className?: string
@@ -41,7 +44,7 @@ export function Button({
     className,
     ...rest
 }: ButtonProps) {
-    const { bContainer, bIcon } = button({ variant })
+    const { bContainer, bIcon } = buttonVariants({ variant })
 
     return (
         <button className={twMerge(bContainer(), className)} {...rest}>

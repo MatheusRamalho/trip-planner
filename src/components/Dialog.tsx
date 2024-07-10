@@ -16,8 +16,15 @@ export function Dialog({ title, description, onClose, children }: DialogProps) {
                     <div className="flex items-center justify-between gap-2">
                         <h2 className="text-lg font-semibold">{title}</h2>
 
-                        <button type="button" onClick={onClose}>
-                            <Icon name="x" className="size-5 text-zinc-400" />
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="group"
+                        >
+                            <Icon
+                                name="x"
+                                className="size-5 text-zinc-400 group-hover:text-zinc-100"
+                            />
                         </button>
                     </div>
 

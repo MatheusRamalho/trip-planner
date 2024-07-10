@@ -67,7 +67,7 @@ export function InviteGuestsModal({
                 className="p-2.5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center justify-between gap-2"
             >
                 <div className="flex-1 flex items-center gap-2 px-2">
-                    <Icon name="at-sign" className="size-5 text-zinc-400" />
+                    <Icon name="mail" className="size-5 text-zinc-400" />
 
                     <input
                         id="email"
@@ -78,12 +78,7 @@ export function InviteGuestsModal({
                     />
                 </div>
 
-                <Button
-                    variant="primary"
-                    name="Convidar"
-                    icon="plus"
-                    type="submit"
-                />
+                <Button name="Convidar" icon="plus" type="submit" />
             </form>
         </Dialog>
     )

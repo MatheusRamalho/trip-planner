@@ -26,19 +26,19 @@ export function ConfirmTripModal({ onClose }: ConfirmTripModalProps) {
         >
             <form onSubmit={createNewTrip} className="space-y-3">
                 <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
-                    <Icon name="at-sign" className="size-5 text-zinc-400" />
+                    <Icon name="user" className="size-5 text-zinc-400" />
 
                     <input
-                        id="email"
-                        type="email"
-                        name="email"
+                        id="name"
+                        type="text"
+                        name="name"
                         placeholder="Seu nome completo"
                         className="flex-1 h-10 bg-transparent rounded-md text-lg outline-none placeholder:text-zinc-400 placeholder:text-sm"
                     />
                 </div>
 
                 <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
-                    <Icon name="at-sign" className="size-5 text-zinc-400" />
+                    <Icon name="mail" className="size-5 text-zinc-400" />
 
                     <input
                         id="email"
@@ -50,10 +50,9 @@ export function ConfirmTripModal({ onClose }: ConfirmTripModalProps) {
                 </div>
 
                 <Button
-                    variant="primary"
                     name="Confirmar criação da viagem"
                     type="submit"
-                    className="w-full py-0 h-12"
+                    className="w-full"
                 />
             </form>
         </Dialog>

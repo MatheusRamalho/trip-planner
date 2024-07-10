@@ -47,7 +47,6 @@ export function DestinationAndDateStep({
                 />
             ) : (
                 <Button
-                    variant="primary"
                     name="Continuar"
                     icon="arrow-right"
                     onClick={openGuestInput}

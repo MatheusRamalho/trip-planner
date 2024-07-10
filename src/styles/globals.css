@@ -5,3 +5,8 @@
 * {
     min-width: 0;
 }
+
+/* Para exibir os icones de calendário e timer dos inputs */
+input {
+    color-scheme: dark;
+}
