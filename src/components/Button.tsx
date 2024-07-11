@@ -3,7 +3,7 @@ import { tv, VariantProps } from 'tailwind-variants'
 import { twMerge } from 'tailwind-merge'
 import dynamicIconImports from 'lucide-react/dynamicIconImports'
 
-import { Icon } from './Icon'
+import { Icon } from '@/components/Icon'
 
 const buttonVariants = tv({
     slots: {

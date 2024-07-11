@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Icon } from './Icon'
+
+import { Icon } from '@/components/Icon'
 
 interface AnchorProps {
     name: string

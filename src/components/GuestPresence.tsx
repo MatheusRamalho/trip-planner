@@ -1,11 +1,16 @@
-import { Icon } from './Icon'
+import { Icon } from '@/components/Icon'
 
 interface GuestPresenceProps {
     name: string
     email: string
+    isConfirmed: boolean
 }
 
-export function GuestPresence({ name, email }: GuestPresenceProps) {
+export function GuestPresence({
+    name,
+    email,
+    isConfirmed = false,
+}: GuestPresenceProps) {
     return (
         <div className="flex items-center justify-between gap-4 group">
             <div className="flex-1 space-y-1.5">
@@ -16,7 +21,11 @@ export function GuestPresence({ name, email }: GuestPresenceProps) {
                 </span>
             </div>
 
-            <Icon name="circle-dashed" className="size-5 text-zinc-400" />
+            {isConfirmed ? (
+                <Icon name="circle-check" className="size-5 text-green-400" />
+            ) : (
+                <Icon name="circle-dashed" className="size-5 text-zinc-400" />
+            )}
         </div>
     )
 }

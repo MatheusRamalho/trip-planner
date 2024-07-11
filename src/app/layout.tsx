@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 
 import '@/styles/globals.css'
 
+import ReactQueryClientProviders from '@/libs/react-query-client-provider'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -20,7 +22,11 @@ export default function RootLayout({
             <body
                 className={`${inter.className} bg-zinc-950 text-zinc-50 antialiased`}
             >
-                <div className=""> {children} </div>
+                <div className="">
+                    <ReactQueryClientProviders>
+                        {children}
+                    </ReactQueryClientProviders>
+                </div>
             </body>
         </html>
     )

@@ -10,7 +10,11 @@ import { DestinationAndDateHeader } from './modules/destination-and-date-header'
 import { Guests } from './modules/guests'
 import { CreateAcitvityModal } from './modules/create-activity-modal'
 
-export default function TripDetailsPage() {
+export default function TripDetailsPage({
+    params,
+}: {
+    params: { id: string }
+}) {
     const [isCreateActivityModalOpen, setIsCreateActivityModalOpen] =
         useState<boolean>(false)
 
@@ -24,7 +28,9 @@ export default function TripDetailsPage() {
 
     return (
         <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
-            <DestinationAndDateHeader />
+            <div> {params.id}</div>
+
+            <DestinationAndDateHeader tripId={params.id} />
 
             <main className="flex gap-16 px-4">
                 <div className="flex-1 space-y-6">
@@ -38,23 +44,25 @@ export default function TripDetailsPage() {
                         />
                     </div>
 
-                    <Activities />
+                    <Activities tripId={params.id} />
                 </div>
 
                 <div className="w-80 space-y-6">
-                    <ImportantLinks />
+                    {/* <ImportantLinks /> */}
 
                     <div className="w-full h-px bg-zinc-800" />
 
-                    <div className="">
+                    {/* <div className="">
                         <Guests />
-                    </div>
+                    </div> */}
                 </div>
             </main>
 
-            {isCreateActivityModalOpen && (
-                <CreateAcitvityModal onClose={closeCreateActivityModal} />
-            )}
+            {/* {isCreateActivityModalOpen && (
+                <CreateAcitvityModal
+                    closeActivityModal={closeCreateActivityModal}
+                />
+            )} */}
         </div>
     )
 }

@@ -12,7 +12,6 @@ export function Icon({ name, ...props }: IconProps) {
 
     return (
         <LucideIcon
-            data-testid="icon-lucide"
             strokeWidth={1}
             className={twMerge(props.className)}
             {...props}

@@ -10,10 +10,7 @@ export function Skeleton({ className, children }: SkeletonProps) {
     return (
         <div
             data-testid="skeleton"
-            className={twMerge(
-                'bg-neutral-l-200 dark:bg-neutral-d-200 animate-pulse',
-                className,
-            )}
+            className={twMerge('animate-pulse bg-zinc-800 rounded', className)}
         >
             {children}
         </div>

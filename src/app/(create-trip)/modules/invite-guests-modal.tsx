@@ -1,4 +1,4 @@
-import { Dispatch, FormEvent, SetStateAction } from 'react'
+import { FormEvent } from 'react'
 
 import { Button } from '@/components/Button'
 import { Dialog } from '@/components/Dialog'
@@ -6,55 +6,32 @@ import { Email } from '@/components/Email'
 import { Icon } from '@/components/Icon'
 
 interface InviteGuestsModalProps {
-    guests: string[]
-    setGuests: Dispatch<SetStateAction<string[]>>
-    onClose: () => void
+    emailsToInvite: string[]
+    addNewEmailToInvite: (event: FormEvent<HTMLFormElement>) => void
+    removeEmailFromInvites: (email: string) => void
+    closeGuestModal: () => void
 }
 
 export function InviteGuestsModal({
-    guests,
-    setGuests,
-    onClose,
+    emailsToInvite,
+    addNewEmailToInvite,
+    removeEmailFromInvites,
+    closeGuestModal,
 }: InviteGuestsModalProps) {
-    function addNewEmailToInvite(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault()
-
-        const data = new FormData(event.currentTarget)
-        const email = data.get('email')?.toString()
-
-        if (!email) {
-            return
-        }
-
-        if (guests.includes(email)) {
-            return
-        }
-
-        setGuests([...guests, email])
-
-        event.currentTarget.reset()
-    }
-
-    function removeEmailFromInvite(emailToRemove: string) {
-        const newEmailList = guests.filter((email) => email !== emailToRemove)
-
-        setGuests(newEmailList)
-    }
-
     return (
         <Dialog
             title="Selecionar convidados"
             description="Os convidados irão receber e-mails para confirmar a participação na viagem."
-            onClose={onClose}
+            onClose={closeGuestModal}
         >
             <div className="flex flex-wrap gap-2">
-                {guests.length > 0 &&
-                    guests.map((email, index) => {
+                {emailsToInvite.length > 0 &&
+                    emailsToInvite.map((email, index) => {
                         return (
                             <Email
                                 key={email + index}
                                 email={email}
-                                onClick={() => removeEmailFromInvite(email)}
+                                onClick={() => removeEmailFromInvites(email)}
                             />
                         )
                     })}

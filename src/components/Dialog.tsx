@@ -1,17 +1,43 @@
 import { ReactNode } from 'react'
-import { Icon } from './Icon'
+import { tv, VariantProps } from 'tailwind-variants'
 
-interface DialogProps {
+import { Icon } from '@/components/Icon'
+
+const dialogVariants = tv({
+    base: 'rounded-xl py-5 px-6 bg-zinc-900 shadow-shape space-y-5',
+    variants: {
+        size: {
+            default: 'w-[640px]',
+            small: 'w-fit',
+        },
+    },
+    defaultVariants: {
+        size: 'default',
+    },
+})
+
+interface DialogProps extends VariantProps<typeof dialogVariants> {
     title: string
     description: string
     onClose: () => void
     children: ReactNode
 }
 
-export function Dialog({ title, description, onClose, children }: DialogProps) {
+export function Dialog({
+    title,
+    description,
+    onClose,
+    children,
+    size,
+    ...props
+}: DialogProps) {
     return (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-            <div className="w-[640px] rounded-xl py-5 px-6 bg-zinc-900 shadow-shape space-y-5">
+            <div
+                className={dialogVariants({ size })}
+                // className="w-[640px] rounded-xl py-5 px-6 bg-zinc-900 shadow-shape space-y-5"
+                {...props}
+            >
                 <div className="space-y-2">
                     <div className="flex items-center justify-between gap-2">
                         <h2 className="text-lg font-semibold">{title}</h2>
