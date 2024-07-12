@@ -7,7 +7,7 @@ const dialogVariants = tv({
     base: 'rounded-xl py-5 px-6 bg-zinc-900 shadow-shape space-y-5',
     variants: {
         size: {
-            default: 'w-[640px]',
+            default: 'w-full max-w-[640px]',
             small: 'w-fit',
         },
     },
@@ -32,7 +32,7 @@ export function Dialog({
     ...props
 }: DialogProps) {
     return (
-        <div className="z-10 fixed inset-0 size-full bg-black/60 backdrop-blur-sm flex items-center justify-center">
+        <div className="z-10 fixed inset-0 size-full p-4 bg-black/60 backdrop-blur-sm flex items-center justify-center">
             <div className={dialogVariants({ size })} {...props}>
                 <div className="space-y-2">
                     <div className="flex items-center justify-between gap-2">

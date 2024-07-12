@@ -7,6 +7,7 @@ import 'react-day-picker/dist/style.css'
 import { Button } from '@/components/Button'
 import { Icon } from '@/components/Icon'
 import { Dialog } from '@/components/Dialog'
+import { Divider } from '@/components/Divider'
 
 interface DestinationAndDateStepProps {
     isGuestsInputOpen: boolean
@@ -45,8 +46,8 @@ export function DestinationAndDateStep({
             : null
 
     return (
-        <div className="h-16 px-4 bg-zinc-900 rounded-xl flex items-center gap-3 shadow-shape">
-            <div className="flex items-center gap-2 flex-1">
+        <div className="w-72 h-auto mx-auto p-4 sm:w-full sm:h-16 sm:py-0 bg-zinc-900 rounded-xl flex items-center gap-3 flex-col sm:flex-row shadow-shape">
+            <div className="flex items-center gap-2 flex-1 w-full sm:w-auto">
                 <Icon name="map-pin" className="size-5 text-zinc-400" />
 
                 <input
@@ -59,7 +60,7 @@ export function DestinationAndDateStep({
             </div>
 
             <button
-                className="flex items-center gap-2 text-left"
+                className="flex items-center gap-2 text-left flex-1 py-3 sm:flex-none w-full sm:w-auto"
                 disabled={isGuestsInputOpen}
                 onClick={openDatePicker}
             >
@@ -70,7 +71,7 @@ export function DestinationAndDateStep({
                 </span>
             </button>
 
-            <div className="w-px h-6 bg-zinc-700" />
+            <Divider variant="vertical" />
 
             {isGuestsInputOpen ? (
                 <Button
@@ -78,12 +79,14 @@ export function DestinationAndDateStep({
                     name="Alterar local/data"
                     icon="settings-2"
                     onClick={closeGuestInput}
+                    className="w-full sm:w-fit"
                 />
             ) : (
                 <Button
                     name="Continuar"
                     icon="arrow-right"
                     onClick={openGuestInput}
+                    className="w-full sm:w-fit"
                 />
             )}
 

@@ -1,4 +1,5 @@
 import { Button } from '@/components/Button'
+import { Divider } from '@/components/Divider'
 import { Icon } from '@/components/Icon'
 
 interface InviteGuestsStepProps {
@@ -13,10 +14,10 @@ export function InviteGuestsStep({
     openConfirmTripModal,
 }: InviteGuestsStepProps) {
     return (
-        <div className="h-16 px-4 bg-zinc-900 rounded-xl flex items-center gap-3 shadow-shape">
+        <div className="w-72 h-auto mx-auto p-4 sm:w-full sm:h-16 sm:py-0 bg-zinc-900 rounded-xl flex items-center gap-3 flex-col sm:flex-row shadow-shape">
             <button
                 type="button"
-                className="flex items-center gap-2 flex-1"
+                className="flex items-center gap-2 flex-1 py-3"
                 onClick={openGuestModal}
             >
                 <Icon name="user-round-plus" className="size-5 text-zinc-400" />
@@ -32,12 +33,13 @@ export function InviteGuestsStep({
                 )}
             </button>
 
-            <div className="w-px h-6 bg-zinc-700" />
+            <Divider variant="vertical" />
 
             <Button
                 name="Confirmar viagem"
                 icon="arrow-right"
                 onClick={openConfirmTripModal}
+                className="w-full sm:w-fit"
             />
         </div>
     )

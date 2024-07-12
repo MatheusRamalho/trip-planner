@@ -4,6 +4,7 @@ import { Button } from '@/components/Button'
 import { Dialog } from '@/components/Dialog'
 import { Email } from '@/components/Email'
 import { Icon } from '@/components/Icon'
+import { Divider } from '@/components/Divider'
 
 interface InviteGuestsModalProps {
     emailsToInvite: string[]
@@ -37,11 +38,11 @@ export function InviteGuestsModal({
                     })}
             </div>
 
-            <div className="w-full h-px bg-zinc-800" />
+            <Divider className="w-full" />
 
             <form
                 onSubmit={addNewEmailToInvite}
-                className="p-2.5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center justify-between gap-2"
+                className="p-2.5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center justify-between gap-2 flex-col sm:flex-row"
             >
                 <div className="flex-1 flex items-center gap-2 px-2">
                     <Icon name="mail" className="size-5 text-zinc-400" />
@@ -55,7 +56,12 @@ export function InviteGuestsModal({
                     />
                 </div>
 
-                <Button name="Convidar" icon="plus" type="submit" />
+                <Button
+                    name="Convidar"
+                    icon="plus"
+                    type="submit"
+                    className="w-full sm:w-fit"
+                />
             </form>
         </Dialog>
     )
