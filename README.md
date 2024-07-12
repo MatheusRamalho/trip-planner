@@ -1,4 +1,4 @@
-# Payment Gateway
+# Trip Planner
 
 <br />
 
@@ -41,8 +41,11 @@ Projeto desenvolvido durante o evento do Rocketseat no NLW Journey na trilha de 
 
 ## 🧰 Funcionalidades
 
-- Formulário funcional
-- Aplicação de informações no cartão
+- Criar uma viagem
+- Adicionar convidados
+- Adicionar atividades na viagem
+- Adicionar links importantes na viagem
+- Adicionar mais convidados na viagem
 
 <br />
 
