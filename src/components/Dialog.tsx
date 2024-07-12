@@ -32,7 +32,7 @@ export function Dialog({
     ...props
 }: DialogProps) {
     return (
-        <div className="z-10 fixed inset-0 bg-black/60 flex items-center justify-center">
+        <div className="z-10 fixed inset-0 size-full bg-black/60 backdrop-blur-sm flex items-center justify-center">
             <div className={dialogVariants({ size })} {...props}>
                 <div className="space-y-2">
                     <div className="flex items-center justify-between gap-2">
