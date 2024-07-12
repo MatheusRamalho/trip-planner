@@ -27,7 +27,7 @@ export function Toast({
     return (
         visible && (
             <div
-                className="z-50 fixed top-4 right-4 w-64 p-4 bg-zinc-800 rounded-lg shadow-shape"
+                className="z-40 fixed top-4 right-4 w-64 p-4 bg-zinc-800 rounded-lg shadow-shape"
                 {...rest}
             >
                 <div className="flex items-start gap-2">

@@ -5,18 +5,23 @@ import { useQuery } from '@tanstack/react-query'
 import { getActivities } from '@/api/get-activities'
 import { Activity } from '@/components/Activity'
 import { Skeleton } from '@/components/Skeleton'
+import { useEffect } from 'react'
 
 interface ActivitiesProps {
     tripId: string
 }
 
 export function Activities({ tripId }: ActivitiesProps) {
-    const { data, isFetching } = useQuery({
+    const { data, refetch, isFetching } = useQuery({
         queryKey: ['trip-details-activities', tripId],
         queryFn: () => getActivities({ tripId }),
+        refetchInterval: 10000,
     })
 
-    console.log(data)
+    useEffect(() => {
+        refetch()
+    }, [refetch])
+
     return (
         <div className="space-y-8">
             {isFetching ? (

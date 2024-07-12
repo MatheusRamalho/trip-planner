@@ -32,12 +32,8 @@ export function Dialog({
     ...props
 }: DialogProps) {
     return (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-            <div
-                className={dialogVariants({ size })}
-                // className="w-[640px] rounded-xl py-5 px-6 bg-zinc-900 shadow-shape space-y-5"
-                {...props}
-            >
+        <div className="z-10 fixed inset-0 bg-black/60 flex items-center justify-center">
+            <div className={dialogVariants({ size })} {...props}>
                 <div className="space-y-2">
                     <div className="flex items-center justify-between gap-2">
                         <h2 className="text-lg font-semibold">{title}</h2>

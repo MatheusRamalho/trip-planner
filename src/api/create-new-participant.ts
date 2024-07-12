@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { api } from '@/libs/axios'
 
 interface createNewParticipantParams {

@@ -7,15 +7,22 @@ interface createNewActivityParams {
     occurs_at: string
 }
 
+interface createNewActivityResponse {
+    activityId: string
+}
+
 export async function createNewActivity({
     tripId,
     title,
     occurs_at,
-}: createNewActivityParams) {
-    const response = await api.post(`trips/${tripId}/activities`, {
-        title,
-        occurs_at,
-    })
+}: createNewActivityParams): Promise<createNewActivityResponse> {
+    const response = await api.post<createNewActivityResponse>(
+        `trips/${tripId}/activities`,
+        {
+            title,
+            occurs_at,
+        },
+    )
 
     return response.data
 }

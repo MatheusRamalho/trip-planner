@@ -4,11 +4,13 @@ import { useState } from 'react'
 
 import { Button } from '@/components/Button'
 
-import { ImportantLinks } from './modules/important-links'
-import { Activities } from './modules/activities'
-import { DestinationAndDateHeader } from './modules/destination-and-date-header'
-import { Guests } from './modules/guests'
-import { CreateAcitvityModal } from './modules/create-activity-modal'
+import { DestinationAndDateHeader } from './modules/destination/destination-and-date-header'
+import { ImportantLinks } from './modules/link/important-links'
+import { CreateLinkModal } from './modules/link/create-importante-link-modal'
+import { Activities } from './modules/activity/activities'
+import { CreateAcitvityModal } from './modules/activity/create-activity-modal'
+import { Guests } from './modules/participant/guests'
+import { CreateGuestModal } from './modules/participant/create-guest-modal'
 
 export default function TripDetailsPage({
     params,
@@ -16,6 +18,10 @@ export default function TripDetailsPage({
     params: { id: string }
 }) {
     const [isCreateActivityModalOpen, setIsCreateActivityModalOpen] =
+        useState<boolean>(false)
+    const [isCreateImportantLinkModalOpen, setIsCreateImportantLinkModalOpen] =
+        useState<boolean>(false)
+    const [isCreateGuestkModalOpen, setIsCreateGuestkModalOpen] =
         useState<boolean>(false)
 
     function openCreateActivityModal() {
@@ -26,10 +32,24 @@ export default function TripDetailsPage({
         setIsCreateActivityModalOpen(false)
     }
 
+    function openCreateImportantLinkModal() {
+        setIsCreateImportantLinkModalOpen(true)
+    }
+
+    function closeCreateImportantLinkModal() {
+        setIsCreateImportantLinkModalOpen(false)
+    }
+
+    function openCreateGuestModal() {
+        setIsCreateGuestkModalOpen(true)
+    }
+
+    function closeCreateGuestModal() {
+        setIsCreateGuestkModalOpen(false)
+    }
+
     return (
         <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
-            <div> {params.id}</div>
-
             <DestinationAndDateHeader tripId={params.id} />
 
             <main className="flex gap-16 px-4">
@@ -48,21 +68,46 @@ export default function TripDetailsPage({
                 </div>
 
                 <div className="w-80 space-y-6">
-                    {/* <ImportantLinks /> */}
+                    <ImportantLinks
+                        tripId={params.id}
+                        openCreateImportantLinkModal={
+                            openCreateImportantLinkModal
+                        }
+                    />
 
                     <div className="w-full h-px bg-zinc-800" />
 
-                    {/* <div className="">
-                        <Guests />
-                    </div> */}
+                    <div className="">
+                        <Guests
+                            tripId={params.id}
+                            openCreateGuestModal={openCreateGuestModal}
+                        />
+                    </div>
                 </div>
             </main>
 
-            {/* {isCreateActivityModalOpen && (
+            {isCreateActivityModalOpen && (
                 <CreateAcitvityModal
+                    tripId={params.id}
                     closeActivityModal={closeCreateActivityModal}
                 />
-            )} */}
+            )}
+
+            {isCreateImportantLinkModalOpen && (
+                <CreateLinkModal
+                    tripId={params.id}
+                    closeCreateImportantLinkModal={
+                        closeCreateImportantLinkModal
+                    }
+                />
+            )}
+
+            {isCreateGuestkModalOpen && (
+                <CreateGuestModal
+                    tripId={params.id}
+                    closeCreateGuestModal={closeCreateGuestModal}
+                />
+            )}
         </div>
     )
 }

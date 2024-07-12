@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { format } from 'date-fns'
 
 import { getTripDetails } from '@/api/get-trip-details'
+// import { updateTrip } from '@/api/update-trip'
 import { Icon } from '@/components/Icon'
 import { Button } from '@/components/Button'
 import { Skeleton } from '@/components/Skeleton'
@@ -17,6 +18,26 @@ export function DestinationAndDateHeader({
         queryKey: ['trip-details', tripId],
         queryFn: () => getTripDetails({ tripId }),
     })
+
+    // const { mutateAsync: mutationUpdateTrip } = useMutation({
+    //     mutationFn: updateTrip,
+    // })
+
+    // async function createActivity(event: FormEvent<HTMLFormElement>) {
+    //     event.preventDefault()
+
+    //     try {
+    //         await mutationUpdateTrip({
+    //             tripId,
+    //             destination,
+    //             starts_at,
+    //             ends_at,
+    //         })
+    //     } catch (error) {
+    //         console.error(error)
+    //     } finally {
+    //     }
+    // }
 
     return (
         <div className="h-16 px-4 bg-zinc-900 rounded-xl shadow-shape flex items-center justify-between gap-3">

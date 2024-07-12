@@ -10,7 +10,7 @@ interface createNewTripParams {
     owner_email: string
 }
 
-interface CreateNewTripResponse {
+interface createNewTripResponse {
     tripId: string
 }
 
@@ -21,8 +21,8 @@ export async function createNewTrip({
     emails_to_invite,
     owner_name,
     owner_email,
-}: createNewTripParams): Promise<CreateNewTripResponse> {
-    const response = await api.post<CreateNewTripResponse>('/trips', {
+}: createNewTripParams): Promise<createNewTripResponse> {
+    const response = await api.post<createNewTripResponse>('/trips', {
         destination,
         starts_at,
         ends_at,
