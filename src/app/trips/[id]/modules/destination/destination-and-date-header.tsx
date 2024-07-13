@@ -6,6 +6,7 @@ import { getTripDetails } from '@/api/get-trip-details'
 import { Icon } from '@/components/Icon'
 import { Button } from '@/components/Button'
 import { Skeleton } from '@/components/Skeleton'
+import { Divider } from '@/components/Divider'
 
 interface DestinationAndDateHeaderProps {
     tripId: string
@@ -40,11 +41,11 @@ export function DestinationAndDateHeader({
     // }
 
     return (
-        <div className="h-16 px-4 bg-zinc-900 rounded-xl shadow-shape flex items-center justify-between gap-3">
+        <div className="w-full h-auto mx-auto p-4 sm:h-16 sm:py-0 bg-zinc-900 rounded-xl shadow-shape flex items-center justify-between gap-3 flex-col sm:flex-row">
             {isFetching ? (
                 <Skeleton className="w-40 h-8" />
             ) : (
-                <div className="flex items-center gap-2 flex-1">
+                <div className="flex items-center gap-2 sm:flex-1 h-10">
                     <Icon name="map-pin" className="size-5 text-zinc-400" />
 
                     <span className="text-base text-zinc-100">
@@ -53,11 +54,11 @@ export function DestinationAndDateHeader({
                 </div>
             )}
 
-            <div className="flex items-center gap-5">
+            <div className="w-full sm:w-auto flex items-center flex-col sm:flex-row gap-5">
                 {isFetching ? (
                     <Skeleton className="w-40 h-8" />
                 ) : (
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 h-10">
                         <Icon
                             name="calendar"
                             className="size-5 text-zinc-400"
@@ -77,7 +78,7 @@ export function DestinationAndDateHeader({
                     </div>
                 )}
 
-                <div className="w-px h-6 bg-zinc-700" />
+                <Divider variant="vertical" />
 
                 {isFetching ? (
                     <Skeleton className="w-40 h-8" />
@@ -86,6 +87,7 @@ export function DestinationAndDateHeader({
                         variant="secondary"
                         name="Alterar local/data"
                         icon="settings-2"
+                        className="w-full sm:w-fit"
                     />
                 )}
             </div>

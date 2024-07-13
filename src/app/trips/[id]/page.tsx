@@ -49,25 +49,32 @@ export default function TripDetailsPage({
     }
 
     return (
-        <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
+        <div className="max-w-6xl px-2 lg:px-6 py-10 mx-auto space-y-8">
             <DestinationAndDateHeader tripId={params.id} />
 
-            <main className="flex gap-16 px-4">
+            <main className="flex gap-16 px-4 flex-col lg:flex-row">
                 <div className="flex-1 space-y-6">
-                    <div className="flex items-center justify-between gap-2">
-                        <h2 className="text-3xl font-semibold"> Atividades </h2>
+                    <div className="flex items-center justify-between gap-2 flex-col lg:flex-row">
+                        <div className="flex-1 w-full lg:w-auto">
+                            <h2 className=" text-3xl font-semibold">
+                                Atividades
+                            </h2>
+                        </div>
 
                         <Button
                             name="Cadastrar atividade"
                             icon="plus"
                             onClick={openCreateActivityModal}
+                            className="w-full lg:w-fit"
                         />
                     </div>
 
                     <Activities tripId={params.id} />
                 </div>
 
-                <div className="w-80 space-y-6">
+                <div className="lg:hidden w-full h-px bg-zinc-800" />
+
+                <div className="w-full lg:w-80 space-y-6">
                     <ImportantLinks
                         tripId={params.id}
                         openCreateImportantLinkModal={
