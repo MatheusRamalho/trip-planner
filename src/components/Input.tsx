@@ -13,7 +13,6 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export function Input({ icon, name, control, error, ...rest }: InputProps) {
-    console.log(error && error[name])
     return (
         <div className="">
             <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">

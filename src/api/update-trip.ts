@@ -4,8 +4,8 @@ import { api } from '@/libs/axios'
 interface updateTripParams {
     tripId: string
     destination: string
-    starts_at: string
-    ends_at: string
+    starts_at: Date
+    ends_at: Date
 }
 
 export async function updateTrip({

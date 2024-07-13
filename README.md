@@ -46,6 +46,7 @@ Projeto desenvolvido durante o evento do Rocketseat no NLW Journey na trilha de 
 - Adicionar atividades na viagem
 - Adicionar links importantes na viagem
 - Adicionar mais convidados na viagem
+- Atualizar destino e data da viagem
 
 <br />
 
