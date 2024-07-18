@@ -1,0 +1,102 @@
+name: CI/CD
+
+env:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  CI:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # - name: Cache node
+      #   uses: actions/cache@v4
+      #   id: npm-cache
+      #   with:
+      #     path: node_modules
+      #     key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: |
+          echo "Running installing dependencies..."
+          npm install
+
+      - name: Run Lint
+        run: |
+          echo "Running linting tests..."
+          npm run lint
+
+      # - name: Run Tests
+      #   run: |
+      #     echo "Running jest tests..."
+      #     npm run test
+
+      # - name: Run Storybook
+      #   run: |
+      #     echo "Running storyboook..."
+      #     npm run build-storybook
+
+  CD:
+    name: Continuous Delivery
+    runs-on: ubuntu-latest
+
+    needs: [CI]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # - name: Cache node
+      #   uses: actions/cache@v4
+      #   id: npm-cache-node
+      #   with:
+      #     path: node_modules
+      #     key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-npm-
+
+      # - name: Cache build
+      #   uses: actions/cache@v4
+      #   id: npm-cache-build
+      #   with:
+      #     path: |
+      #       ~/.npm
+      #       ${{ github.workspace }}/.next/cache
+      #     key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
